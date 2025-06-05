@@ -16,7 +16,7 @@ public class PaymentConverter {
         this.objectMapper = objectMapper;
     }
 
-    public String convertToString(Payment payment) {
+    public String convertToString(Object payment) {
         try {
             return objectMapper.writeValueAsString(payment);
         } catch (JsonProcessingException e) {

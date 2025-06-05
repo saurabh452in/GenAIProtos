@@ -5,6 +5,7 @@ import com.eventDriven.PmtProcessor.enums.Status;
 import com.eventDriven.PmtProcessor.model.Event;
 import com.eventDriven.PmtProcessor.model.Payment;
 import com.eventDriven.PmtProcessor.repository.EventRepository;
+import com.eventDriven.PmtProcessor.repository.PaymentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Service
@@ -28,7 +30,8 @@ public class TopicListeners {
 
     @Autowired
     KafkaTemplate<String, String> kafkaTemplate;
-
+    @Autowired
+    PaymentRepository repository;
     @KafkaListener(topics = "gatewayTopic", groupId = "gatewayTopicCG", concurrency = "3")
     public void listen1(@Payload String message, Acknowledgment acknowledgment ) {
 
@@ -42,9 +45,12 @@ public class TopicListeners {
         e.setEventId(UUID.randomUUID().toString());
         e.setPayment(converter.convertToString(payment));
         e.setStatus(Status.RECEIVED);
+        e.setEventCreationTimestamp(new Date());
 
 
         eventRepository.save(e);
+        payment.setStatus(Status.RECEIVED);
+        repository.save(payment);
 
         kafkaTemplate.send("routingTopic",payment.getPaymentId(),converter.convertToString(payment));
 
@@ -66,9 +72,10 @@ public class TopicListeners {
         e.setEventId(UUID.randomUUID().toString());
         e.setPayment(converter.convertToString(payment));
         e.setStatus(Status.ROUTED);
-
+        e.setEventCreationTimestamp(new Date());
         eventRepository.save(e);
-
+        payment.setStatus(Status.ROUTED);
+        repository.save(payment);
         kafkaTemplate.send("outputTopic",converter.convertToString(payment));
         acknowledgment.acknowledge();
     }
