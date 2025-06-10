@@ -37,7 +37,7 @@ public class TopicListeners {
 
         Payment payment = converter.convertFromString(message);
         logger.info("Received message from gatewayTopic: {}", payment);
-        logger.debug("Processing message in gateway listener");
+
         payment.setStatus(Status.RECEIVED);
 
         Event e = new Event();
@@ -63,7 +63,7 @@ public class TopicListeners {
 
         Payment payment = converter.convertFromString(message);
         logger.info("Received message from routingTopic: {}", message);
-        logger.debug("Processing message in routing listener");
+
 
         payment.setStatus(Status.ROUTED);
 
@@ -75,8 +75,9 @@ public class TopicListeners {
         e.setEventCreationTimestamp(new Date());
         eventRepository.save(e);
         payment.setStatus(Status.ROUTED);
-        repository.save(payment);
         kafkaTemplate.send("outputTopic",converter.convertToString(payment));
+        logger.info("Payment routed successfully: {}", payment);
+        repository.save(payment);
         acknowledgment.acknowledge();
     }
 }

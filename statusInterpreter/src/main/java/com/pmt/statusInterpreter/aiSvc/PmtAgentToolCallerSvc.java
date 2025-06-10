@@ -34,10 +34,9 @@ public class PmtAgentToolCallerSvc {
 
     ChatMemory chatMemory;
 
-     ;
-
     private static final String PROMPT_INSTR =
-            "You'll act as an agent to help the user with questions on the paymentId number provided by user ." ;
+            "You'll act as an agent to help the user with questions on the paymentId number provided by user . " +
+                    "Use both the tools getPaymentDetailsFromLogs tool and getPaymentById tool to retrieve the payment details. " ;
     private static final Logger log = LoggerFactory.getLogger(PmtAgentToolCallerSvc.class);
 
     @Autowired
