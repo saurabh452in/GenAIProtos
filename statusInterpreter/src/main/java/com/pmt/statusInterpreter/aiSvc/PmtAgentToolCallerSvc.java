@@ -22,8 +22,10 @@ public class PmtAgentToolCallerSvc {
     ChatMemory chatMemory;
 
     private static final String SYSTEM_PROMPT_INSTR =
-            "You'll act as an agent to help the user with questions on the paymentId number provided by user . " +
-                    "Use both the tools getPaymentDetailsFromLogs tool and getPaymentById tool to retrieve the payment details. " ;
+            "You are an AI assistant who will help answer the user's questions on the paymentId number provided by user. " +
+                    "Pick the paymentId from the users question." +
+                    "Make use of both the tools getPaymentDetailsFromLogs tool and getPaymentById tool provided to you" +
+                    "to gather details about the paymentId.";
     private static final Logger log = LoggerFactory.getLogger(PmtAgentToolCallerSvc.class);
 
     @Autowired
