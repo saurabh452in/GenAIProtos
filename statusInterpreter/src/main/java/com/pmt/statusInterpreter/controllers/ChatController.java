@@ -39,8 +39,10 @@ public class ChatController {
 
 
     @PostMapping("/chatWithAgent")
-    public ResponseEntity<String> chatWithAgent(@RequestParam String userQuestion) {
-        var chatResponse = pmtAgentToolCallerSvc.askQuestion(userQuestion);
+    public ResponseEntity<String> chatWithAgent(@RequestParam String userQuestion,
+                                                @RequestParam String userId) {
+
+        var chatResponse = pmtAgentToolCallerSvc.askQuestion(userQuestion,userId);
         return new ResponseEntity<String>(chatResponse, HttpStatus.OK);
     }
 

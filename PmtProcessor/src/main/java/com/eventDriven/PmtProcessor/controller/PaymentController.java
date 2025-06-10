@@ -34,7 +34,7 @@ public class PaymentController {
 
     @GetMapping("/{txnId}")
     public ResponseEntity<PaymentDataResponse> getAllPaymentData(@PathVariable String txnId) {
-        logger.info("getting all Payment data with id: {}", txnId);
+        //logger.info("getting all Payment data with paymentId= {}", txnId);
         StringBuilder builder = new StringBuilder();
         Payment pmt =
                 repository.findById(txnId).orElse(null);

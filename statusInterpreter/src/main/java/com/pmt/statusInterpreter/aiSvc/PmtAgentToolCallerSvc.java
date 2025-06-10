@@ -16,23 +16,28 @@ import org.springframework.ai.ollama.api.OllamaModel;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 
 public class PmtAgentToolCallerSvc {
 
+    private final ChatClient inMemoryChatClient;
     ChatClient chatClient;
 
-   ChatMemory chatMemory ;
+    ChatMemory chatMemory;
+
+     ;
 
     private static final String PROMPT_INSTR =
-            "You'll act as an agent to help the user with questions on the paymentId number provided by user . ";
+            "You'll act as an agent to help the user with questions on the paymentId number provided by user ." ;
     private static final Logger log = LoggerFactory.getLogger(PmtAgentToolCallerSvc.class);
 
     @Autowired
@@ -41,28 +46,33 @@ public class PmtAgentToolCallerSvc {
     private final OllamaChatModel chatModel;
 
     public PmtAgentToolCallerSvc(@Autowired OllamaChatModel chatModel, @Autowired
-    ChatMemory chatMemory) {
+    ChatMemory chatMemory, @Qualifier("simpleChatClient") ChatClient chatClient,
+                                 @Qualifier("inMemoryChatClient")
+                                 ChatClient inMemoryChatClient) {
         this.chatModel = chatModel;
         this.chatMemory = chatMemory;
-        this.chatClient = ChatClient.builder(chatModel)
-                .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build()).build();
+        this.chatClient = chatClient;
+        this.inMemoryChatClient = inMemoryChatClient;
+
     }
 
 
-    public String askQuestion(String userQuestion) {
+    public String askQuestion(String userQuestion,String userId) {
 
 
         SystemMessage systemMessage = new SystemMessage(PROMPT_INSTR);
         Prompt prompt = new Prompt(systemMessage, new UserMessage(userQuestion));
 
-
-        var response = ChatClient.create(chatModel).prompt(prompt)
+        /*var response = chatClient.prompt(prompt)
                 .tools(paymentDataTool).call().chatResponse();
-        return response.getResult().getOutput().getText();
+*/
+       var responseUsingMemory = inMemoryChatClient.prompt(prompt)
+               .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, userId))
+                .tools(paymentDataTool).call().chatResponse();
+
+        return responseUsingMemory.getResult().getOutput().getText();
 
     }
-
-
 
 
 }
