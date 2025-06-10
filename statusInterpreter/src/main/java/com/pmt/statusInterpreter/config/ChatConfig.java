@@ -25,7 +25,8 @@ public class ChatConfig {
     @Bean(name = "inMemoryChatClient")
     public ChatClient inMemoryChatClient(@Autowired OllamaChatModel chatModel, @Autowired ChatMemory chatMemory) {
 
-        return ChatClient.builder(chatModel).defaultAdvisors(PromptChatMemoryAdvisor.builder(chatMemory).
+        return ChatClient.builder(chatModel)
+                .defaultAdvisors(PromptChatMemoryAdvisor.builder(chatMemory).
 
                 build()).
 
@@ -40,5 +41,7 @@ public class ChatConfig {
 
                 build();*/
     }
+
+
 
 }
