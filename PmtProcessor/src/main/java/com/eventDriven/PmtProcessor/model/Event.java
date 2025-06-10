@@ -3,6 +3,7 @@ package com.eventDriven.PmtProcessor.model;
 import com.eventDriven.PmtProcessor.enums.Status;
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -21,6 +22,17 @@ public class Event {
     @Column(nullable = true)
     private String payment;
 
+    @Column(name = "eventCreationTimestamp",nullable = true)
+    private Date eventCreationTimestamp;
+
+    public Date getEventCreationTimestamp() {
+        return eventCreationTimestamp;
+    }
+
+    public void setEventCreationTimestamp(Date eventCreationTimestamp) {
+        this.eventCreationTimestamp = eventCreationTimestamp;
+    }
+
     // Default constructor
     public Event() {
         // Default constructor for JPA
@@ -31,7 +43,7 @@ public class Event {
         if (o == null || getClass() != o.getClass()) return false;
 
         Event event = (Event) o;
-        return Objects.equals(getEventId(), event.getEventId()) && Objects.equals(getPaymentId(), event.getPaymentId()) && getStatus() == event.getStatus() && Objects.equals(getPayment(), event.getPayment());
+        return Objects.equals(getEventId(), event.getEventId()) && Objects.equals(getPaymentId(), event.getPaymentId()) && getStatus() == event.getStatus() && Objects.equals(getPayment(), event.getPayment()) && Objects.equals(getEventCreationTimestamp(), event.getEventCreationTimestamp());
     }
 
     @Override
@@ -40,6 +52,7 @@ public class Event {
         result = 31 * result + Objects.hashCode(getPaymentId());
         result = 31 * result + Objects.hashCode(getStatus());
         result = 31 * result + Objects.hashCode(getPayment());
+        result = 31 * result + Objects.hashCode(getEventCreationTimestamp());
         return result;
     }
 

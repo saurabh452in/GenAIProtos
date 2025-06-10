@@ -3,6 +3,9 @@ package com.eventDriven.PmtProcessor.model;
 import com.eventDriven.PmtProcessor.enums.Status;
 import jakarta.persistence.*;
 
+import java.util.Date;
+import java.util.Objects;
+
 @Entity
 @Table(name = "payments")
 public class Payment {
@@ -25,6 +28,37 @@ public class Payment {
     @Column(nullable = true)
     private Status status;
 
+    @Column(name = "paymentCreationTimestamp",nullable = true)
+    private Date paymentCreationTimestamp;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Payment payment = (Payment) o;
+        return Double.compare(getAmount(), payment.getAmount()) == 0 && Objects.equals(getPaymentId(), payment.getPaymentId()) && Objects.equals(getCurrency(), payment.getCurrency()) && Objects.equals(getDebtorAccount(), payment.getDebtorAccount()) && Objects.equals(getCreditorAccount(), payment.getCreditorAccount()) && getStatus() == payment.getStatus() && Objects.equals(getPaymentCreationTimestamp(), payment.getPaymentCreationTimestamp());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hashCode(getPaymentId());
+        result = 31 * result + Double.hashCode(getAmount());
+        result = 31 * result + Objects.hashCode(getCurrency());
+        result = 31 * result + Objects.hashCode(getDebtorAccount());
+        result = 31 * result + Objects.hashCode(getCreditorAccount());
+        result = 31 * result + Objects.hashCode(getStatus());
+        result = 31 * result + Objects.hashCode(getPaymentCreationTimestamp());
+        return result;
+    }
+
+    public Date getPaymentCreationTimestamp() {
+        return paymentCreationTimestamp;
+    }
+
+    public void setPaymentCreationTimestamp(Date paymentCreationTimestamp) {
+        this.paymentCreationTimestamp = paymentCreationTimestamp;
+    }
+
     // Default constructor
     public Payment() {
         // Default constructor for JPA
@@ -38,21 +72,6 @@ public class Payment {
         this.debtorAccount = debtorAccount;
         this.creditorAccount = creditorAccount;
         this.status = status;
-    }
-
-    @Override
-    public int hashCode() {
-        return 37* paymentId.hashCode() +
-               37 * Double.hashCode(amount) +
-               37 * currency.hashCode() +
-               37 * debtorAccount.hashCode() +
-               37 * creditorAccount.hashCode() +
-               37 * status.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return paymentId.equals(((Payment)obj).getPaymentId());
     }
 
     // Getters and Setters

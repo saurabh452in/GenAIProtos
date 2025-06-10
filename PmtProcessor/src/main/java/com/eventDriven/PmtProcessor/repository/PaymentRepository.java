@@ -6,9 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, String> {
+    @Override
+    Optional<Payment> findById(String s);
+
     List<Payment> findByStatus(Status status);
     List<Payment> findByDebtorAccount(String debtorAccount);
     List<Payment> findByCreditorAccount(String creditorAccount);

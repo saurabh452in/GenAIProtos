@@ -10,5 +10,6 @@ import java.util.List;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, String> {
+    List<Event> findByPaymentId(String paymentId);
 
 }
