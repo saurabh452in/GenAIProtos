@@ -1,0 +1,64 @@
+<!--
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Status Interpreter</title>
+</head>
+<body>
+<h1>Payment Status Interpreter Ai assistant</h1>
+<form th:action="@{/pmtStatusInterpreter/interact}" method="post">
+    <label for="userId">User ID:</label><br>
+    <input type="text" id="userId" name="userId" th:value="${userId}"/><br><br>
+
+    <label for="prompt">Enter your prompt:</label><br>
+    <textarea id="prompt" name="prompt" rows="4" cols="50" th:text="${prompt}"></textarea><br>
+    <button type="submit">Submit</button>
+</form>
+<div th:if="${result}">
+    <h2>AI Response:</h2>
+    <p th:text="${result}"></p>
+</div>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Status Interpreter AI assistant</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f9; }
+        .chat-container { max-width: 500px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #ccc; padding: 20px; }
+        .chat-history { max-height: 300px; overflow-y: auto; margin-bottom: 20px; }
+        .message { margin: 10px 0; }
+        .user { text-align: right; }
+        .user .bubble { background: #d1e7dd; color: #0f5132; display: inline-block; padding: 10px 15px; border-radius: 15px 15px 0 15px; }
+        .bot { text-align: left; }
+        .bot .bubble { background: #e2e3e5; color: #41464b; display: inline-block; padding: 10px 15px; border-radius: 15px 15px 15px 0; }
+        .input-row { display: flex; gap: 10px; }
+        .input-row input, .input-row textarea { flex: 1; }
+        .input-row button { flex: 0; }
+        label { font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="chat-container">
+    <h2>Payment Status Interpreter AI assistant</h2>
+    <form th:action="@{/pmtStatusInterpreter/interact}" method="post">
+        <div class="input-row" style="margin-bottom:10px;">
+            <input type="text" id="userId" name="userId" th:value="${userId}" placeholder="User ID" required/>
+        </div>
+        <div class="chat-history">
+            <div th:if="${prompt}" class="message user">
+                <div class="bubble" th:text="${prompt}"></div>
+            </div>
+            <div th:if="${result}" class="message bot">
+                <div class="bubble" th:text="${result}"></div>
+            </div>
+        </div>
+        <div class="input-row">
+            <textarea id="prompt" name="prompt" rows="2" placeholder="Type your message..." required></textarea>
+            <button type="submit">Send</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
