@@ -10,16 +10,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
-
+import org.springframework.stereotype.Controller;
 import java.time.Duration;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/pmtStatusInterpreter")
+@Controller
 public class ChatController {
 
+    @GetMapping("/pmtStatusInterpreter")
+    public String showForm() {
+        return "statusForm";
+    }
+
+    @PostMapping("/pmtStatusInterpreter/interact")
+    public String interpretStatus(@RequestParam("prompt") String userQuestion,
+                                  @RequestParam("userId") String userId, Model model) {
+
+        String result = "Response: "; // Placeholder
+        model.addAttribute("prompt", userQuestion);
+
+
+        var chatResponse = pmtAgentToolCallerSvc.askQuestion(userQuestion,userId);
+        model.addAttribute("result", result +chatResponse);
+        return "statusForm";
+    }
     @Autowired
     private final PmtRagService pmtRagService = null;
 
@@ -38,7 +55,7 @@ public class ChatController {
     }
 
 
-    @PostMapping("/chatWithAgent")
+    @PostMapping("/pmtStatusInterpreter/chatWithAgent")
     public ResponseEntity<String> chatWithAgent(@RequestParam String userQuestion,
                                                 @RequestParam String userId) {
 
@@ -59,5 +76,8 @@ public class ChatController {
                 .map(chatResponse -> chatResponse.getResult().getOutput().getText())
                 .delayElements(Duration.ofMillis(500));
     }
+
+
+
 }
 
