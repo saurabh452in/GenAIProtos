@@ -26,6 +26,15 @@ public class PmtAgentToolCallerSvc {
                     "Pick the paymentId from the user's question." +
                     "Make use of both the tools getPaymentDetailsFromLogs tool and getPaymentById tool provided to you " +
                     "to gather details about the paymentId.";
+
+
+    private static final String SYSTEM_PROMPT_INSTR_2 =
+            "You are an AI assistant who will help answer the user's questions on the paymentId number provided by user. " +
+                    "Pick the paymentId from the user's question." +
+                    "Make use of both the tools getPaymentDetailsFromVectorStore tool and getPaymentById tool provided to you " +
+                    "to gather details about the paymentId.";
+
+
     private static final Logger log = LoggerFactory.getLogger(PmtAgentToolCallerSvc.class);
 
     @Autowired
@@ -47,7 +56,7 @@ public class PmtAgentToolCallerSvc {
 
     public String askQuestion(String userQuestion, String userId) {
 
-        SystemMessage systemMessage = new SystemMessage(SYSTEM_PROMPT_INSTR);
+        SystemMessage systemMessage = new SystemMessage(SYSTEM_PROMPT_INSTR_2);
         Prompt prompt = new Prompt(systemMessage, new UserMessage(userQuestion));
 
         var responseUsingMemory = inMemoryChatClient.prompt(prompt)

@@ -22,7 +22,6 @@
 
     <!-- Application Loggers -->
     <logger name="com.eventDriven.PmtProcessor" level="INFO"/>
-
     <!-- Framework Loggers -->
     <logger name="org.springframework" level="INFO"/>
     <logger name="org.apache.kafka" level="INFO"/>
