@@ -29,7 +29,7 @@ public class ChatController {
     public String interpretStatus(@RequestParam("prompt") String userQuestion,
                                   @RequestParam("userId") String userId, Model model) {
 
-        String result = "Response: "; // Placeholder
+        String result = ""; // Placeholder
         model.addAttribute("prompt", userQuestion);
 
 

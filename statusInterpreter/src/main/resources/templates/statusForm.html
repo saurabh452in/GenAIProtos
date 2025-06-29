@@ -1,50 +1,40 @@
-<!--
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Status Interpreter</title>
-</head>
-<body>
-<h1>Payment Status Interpreter Ai assistant</h1>
-<form th:action="@{/pmtStatusInterpreter/interact}" method="post">
-    <label for="userId">User ID:</label><br>
-    <input type="text" id="userId" name="userId" th:value="${userId}"/><br><br>
-
-    <label for="prompt">Enter your prompt:</label><br>
-    <textarea id="prompt" name="prompt" rows="4" cols="50" th:text="${prompt}"></textarea><br>
-    <button type="submit">Submit</button>
-</form>
-<div th:if="${result}">
-    <h2>AI Response:</h2>
-    <p th:text="${result}"></p>
-</div>
-</body>
-</html>-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Status Interpreter AI assistant</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f4f4f9; }
-        .chat-container { max-width: 500px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #ccc; padding: 20px; }
-        .chat-history { max-height: 300px; overflow-y: auto; margin-bottom: 20px; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(120deg, #f4f4f9 0%, #e9ecef 100%); text-align: left; margin: 0; }
+        .chat-container { max-width: 500px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px #b0b8c1; padding: 32px 28px 24px 28px; text-align: left; }
+        .chat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+        .chat-header h2 { margin: 0; font-size: 1.3rem; color: #0d223a; letter-spacing: 0.5px; }
+        .chat-history { max-height: 300px; overflow-y: auto; margin-bottom: 20px; background: #f8fafc; border-radius: 8px; padding: 16px 10px; border: 1px solid #e3e7ed; }
         .message { margin: 10px 0; }
         .user { text-align: right; }
-        .user .bubble { background: #d1e7dd; color: #0f5132; display: inline-block; padding: 10px 15px; border-radius: 15px 15px 0 15px; }
+        .user .bubble { background: linear-gradient(90deg, #d1e7dd 60%, #b6e2d3 100%); color: #0f5132; display: inline-block; padding: 10px 15px; border-radius: 15px 15px 0 15px; box-shadow: 0 1px 4px #d1e7dd80; }
         .bot { text-align: left; }
-        .bot .bubble { background: #e2e3e5; color: #41464b; display: inline-block; padding: 10px 15px; border-radius: 15px 15px 15px 0; }
-        .input-row { display: flex; gap: 10px; }
-        .input-row input, .input-row textarea { flex: 1; }
-        .input-row button { flex: 0; }
-        label { font-weight: bold; }
+        .bot .bubble { background: linear-gradient(90deg, #e2e3e5 60%, #f3f4f6 100%); color: #41464b; display: inline-block; padding: 10px 15px; border-radius: 15px 15px 15px 0; box-shadow: 0 1px 4px #e2e3e580; }
+        .input-row { display: flex; gap: 10px; margin-top: 8px; }
+        .input-row input, .input-row textarea { flex: 1; border: 1px solid #b0b8c1; border-radius: 6px; padding: 8px 10px; font-size: 14px; background: #f8fafc; transition: border 0.2s; }
+        .input-row input:focus, .input-row textarea:focus { border: 1.5px solid #0d6efd; outline: none; background: #fff; }
+        .input-row button { flex: 0; background: linear-gradient(90deg, #0d6efd 60%, #3b82f6 100%); color: #fff; border: none; border-radius: 6px; padding: 8px 18px; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px #b0b8c1; transition: background 0.2s; }
+        .input-row button:hover { background: linear-gradient(90deg, #0b5ed7 60%, #2563eb 100%); }
+        label { font-weight: bold; color: #0d223a; }
+        .input-row.user-id-row { max-width: 80px; margin-bottom: 10px; }
+        .input-row.user-id-row input { font-size: 12px; padding: 2px 6px; }
+        @media (max-width: 600px) {
+            .chat-container { max-width: 98vw; padding: 10px; }
+            .chat-header h2 { font-size: 1rem; }
+        }
     </style>
 </head>
 <body>
 <div class="chat-container">
-    <h2>Payment Status Interpreter AI assistant</h2>
+    <div class="chat-header">
+        <h2>Payment Status Interpreter AI Assistant</h2>
+    </div>
     <form th:action="@{/pmtStatusInterpreter/interact}" method="post">
-        <div class="input-row" style="margin-bottom:10px;">
-            <input type="text" id="userId" name="userId" th:value="${userId}" placeholder="User ID" required/>
+        <div class="input-row user-id-row">
+            <input type="text" id="userId" name="userId" th:value="${userId}" placeholder="User ID" required />
         </div>
         <div class="chat-history">
             <div th:if="${prompt}" class="message user">

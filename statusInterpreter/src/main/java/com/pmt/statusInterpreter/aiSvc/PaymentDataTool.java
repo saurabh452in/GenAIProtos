@@ -52,10 +52,11 @@ public class PaymentDataTool {
     )
     public List<String> getPaymentDetailsFromVectorStore(String input) {
         log.info("Calling PaymentDataTool to get data from vectorstore with input: {}", input);
-
-        return vectorStorageService.findInVectorStore( input).stream()
+        List<String> foundDocs = vectorStorageService.findInVectorStore( input).stream()
                 .map(doc -> doc.getText())
                 .collect(Collectors.toList());
+        log.info("Retrieved {} docs from vectorstore for input: {}",foundDocs.size(), input);
+        return foundDocs;
     }
 
 
