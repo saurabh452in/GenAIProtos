@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="spring-boot-kafka-log" packages="com.PmtProcessor">
+    <property name="LOG_PATH" value="./logs"/>
+    <property name="LOG_FILE" value="pmtprocessor"/>
+
+    <Appenders>
+        <Kafka name="Kafka" topic="kafka-log-topic">
+            <!--<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>-->
+            <PatternLayout pattern="%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n"/>
+            <Property name="bootstrap.servers">localhost:9094</Property>
+        </Kafka>
+        <Async name="Async">
+            <AppenderRef ref="Kafka"/>
+        </Async>
+
+        <Console name="stdout" target="SYSTEM_OUT">
+            <!--<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5p [%-7t] %F:%L - %m%n"/>-->
+            <PatternLayout pattern="%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>./logs/pmtprocessor.log</file>
+            <encoder>
+                <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_PATH}/${LOG_FILE}-%d{yyyy-MM-dd}.log</fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+        </appender>
+
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Kafka"/>
+            <AppenderRef ref="stdout"/>
+            <appender-ref ref="RollingFile"/>
+        </Root>
+        <Logger name="org.apache.kafka" level="WARN" /><!-- avoid recursive logging -->
+    </Loggers>
+</Configuration>

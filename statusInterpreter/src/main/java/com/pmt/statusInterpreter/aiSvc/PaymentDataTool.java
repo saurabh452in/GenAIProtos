@@ -19,6 +19,9 @@ import java.util.List;
 public class PaymentDataTool {
 
     @Autowired
+    VectorStorageService vectorStorageService;
+
+    @Autowired
     PmtDataHelperSvc pmtDataHelperSvc;
     private static final Logger log = LoggerFactory.getLogger(PmtAgentToolCallerSvc.class);
 
@@ -32,7 +35,7 @@ public class PaymentDataTool {
     }
 
 
-    @Tool(
+    /*@Tool(
             name = "getPaymentDetailsFromLogs", description = "fetch details about paymentId from logs"
     )
     public List<String> getPaymentDetailsFromLogs(String input) {
@@ -41,6 +44,18 @@ public class PaymentDataTool {
         String filePath = "D:\\saura\\work\\intellijWorkspace\\logs\\pmtprocessor.log";
 
         return searchLogFileParallel(filePath, input);
+    }*/
+
+
+    @Tool(
+            name = "getPaymentDetailsFromVectorStore", description = "fetch details about paymentId from vector store"
+    )
+    public List<String> getPaymentDetailsFromVectorStore(String input) {
+        log.info("Calling PaymentDataTool to get data from vectorstore with input: {}", input);
+
+        return vectorStorageService.findInVectorStore( input).stream()
+                .map(doc -> doc.getText())
+                .collect(Collectors.toList());
     }
 
 
