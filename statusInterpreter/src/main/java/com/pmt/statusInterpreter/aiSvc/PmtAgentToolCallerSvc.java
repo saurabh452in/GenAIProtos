@@ -25,14 +25,17 @@ public class PmtAgentToolCallerSvc {
             "You are an AI assistant who will help answer the user's questions on the paymentId number provided by user. " +
                     "Pick the paymentId from the user's question." +
                     "Make use of both the tools getPaymentDetailsFromLogs tool and getPaymentById tool provided to you " +
-                    "to gather details about the paymentId.";
+                    "to gather details about the paymentId.Don't include any information about how you are gathering the information about the " +
+                    "paymentId in the final response.";
 
 
     private static final String SYSTEM_PROMPT_INSTR_2 =
             "You are an AI assistant who will help answer the user's questions on the paymentId number provided by user. " +
                     "Pick the paymentId from the user's question." +
-                    "Make use of both the tools getPaymentDetailsFromVectorStore tool and getPaymentById tool provided to you " +
-                    "to gather details about the paymentId.";
+                    "Make use of both the tools provided to you. getPaymentDetailsFromVectorStore tool retrieves information from vector store and getPaymentById tool" +
+                    "which retrieves information from external api " +
+                    "to gather details about the paymentId. Don't include any information about how you are gathering the information about the " +
+                    "paymentId  in the final response.";
 
 
     private static final Logger log = LoggerFactory.getLogger(PmtAgentToolCallerSvc.class);

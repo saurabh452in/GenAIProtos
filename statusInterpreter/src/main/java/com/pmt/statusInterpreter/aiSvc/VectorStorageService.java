@@ -33,14 +33,13 @@ public class VectorStorageService {
     }
 
 
-
-
     List<Document> findInVectorStore(String txId) {
         SearchRequest searchRequest = SearchRequest.builder()
                 .query(txId)
-                .topK(200)
+                .topK(50).similarityThreshold(0.25)
                 .build();
         List<Document> docs = vectorStore.similaritySearch(searchRequest);
         return docs;
     }
+
 }

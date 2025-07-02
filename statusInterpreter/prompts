@@ -7,3 +7,32 @@ show me all the attributes of the paymentId 10
 at what time was the paymentId 10 routed
 
 at what time was the paymentId 10 in RECEVIED/ROUTED state
+
+
+
+
+
+
+
+2025-07-02 16:06:34,429 [http-nio-8081-exec-1] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from vectorstore with input: 109
+2025-07-02 16:06:35,745 [http-nio-8081-exec-1] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Retrieved 4 docs from vectorstore for input: 109
+2025-07-02 16:07:09,139 [http-nio-8081-exec-2] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from vectorstore with input: 109
+2025-07-02 16:07:10,721 [http-nio-8081-exec-2] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Retrieved 4 docs from vectorstore for input: 109
+2025-07-02 16:07:27,095 [http-nio-8081-exec-3] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from vectorstore with input: 109
+2025-07-02 16:07:28,492 [http-nio-8081-exec-3] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Retrieved 4 docs from vectorstore for input: 109
+2025-07-02 16:07:56,421 [http-nio-8081-exec-4] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from vectorstore with input: 109
+2025-07-02 16:07:57,768 [http-nio-8081-exec-4] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Retrieved 4 docs from vectorstore for input: 109
+2025-07-02 16:08:35,796 [http-nio-8081-exec-6] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from api with input: 109
+
+
+
+2025-07-02 16:10:19,855 [http-nio-8081-exec-9] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from vectorstore with input: 110
+2025-07-02 16:10:21,194 [http-nio-8081-exec-9] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Retrieved 8 docs from vectorstore for input: 110
+2025-07-02 16:11:00,542 [http-nio-8081-exec-10] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from api with input: 110
+
+
+tool information retrieved and then llm decide that another tool needs to be used below - Autonomous behavior.
+2025-07-02 16:11:29,972 [http-nio-8081-exec-2] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from vectorstore with input: 110
+2025-07-02 16:11:31,378 [http-nio-8081-exec-2] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Retrieved 8 docs from vectorstore for input: 110
+2025-07-02 16:11:31,379 [http-nio-8081-exec-2] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from api with input: 110
+

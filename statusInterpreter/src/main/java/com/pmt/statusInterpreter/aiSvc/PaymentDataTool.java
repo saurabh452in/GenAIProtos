@@ -27,10 +27,10 @@ public class PaymentDataTool {
 
 
     @Tool(
-            name = "getPaymentById", description = "get payment details by paymentId from database "
+            name = "getPaymentById", description = "get payment details by paymentId from api "
     )
     public String pmtAgentToolCaller(String input) {
-        log.info("Calling PaymentDataTool to get data from db with input: {}", input);
+        log.info("Calling PaymentDataTool to get data from api with input: {}", input);
         return pmtDataHelperSvc.getPaymentById(input);
     }
 
