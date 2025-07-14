@@ -25,18 +25,18 @@ public class TopicListeners {
     @Qualifier("kafkaListenerExecutor")
     private Executor kafkaListenerExecutor;
 
-   /* @KafkaListener( groupId = "kafka-log-topic-CG", concurrency = "1" ,
+   /* @KafkaListener( groupId = "kafka-log-topic2-CG", concurrency = "1" ,
             topicPartitions =
                     {
-                            @TopicPartition(topic = "kafka-log-topic",
+                            @TopicPartition(topic = "kafka-log-topic2",
                                     partitionOffsets = @PartitionOffset(partition = "0", initialOffset = "0")),
-                            @TopicPartition(topic = "kafka-log-topic",
+                            @TopicPartition(topic = "kafka-log-topic2",
                                     partitionOffsets = @PartitionOffset(partition = "1", initialOffset = "0"))
                     })*/
 
-    @KafkaListener(topics = "kafka-log-topic", groupId = "kafka-log-topic-CG", concurrency = "1" )
+    @KafkaListener(topics = "kafka-log-topic2", groupId = "kafka-log-topic2-CG", concurrency = "1" )
     public void listen1(@Payload String message, Acknowledgment acknowledgment) {
-        logger.info("Received message from kafka-log-topic: {}", message);
+        logger.info("Received message from kafka-log-topic2: {}", message);
         kafkaListenerExecutor.execute(()-> vectorStorageService.storeVector(message));
 
         acknowledgment.acknowledge();

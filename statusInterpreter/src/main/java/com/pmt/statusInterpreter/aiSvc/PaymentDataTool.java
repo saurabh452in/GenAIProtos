@@ -27,7 +27,7 @@ public class PaymentDataTool {
 
 
     @Tool(
-            name = "getPaymentById", description = "get payment details by paymentId from api "
+            name = "getPaymentById", description = "fetch details about paymentId from api"
     )
     public String pmtAgentToolCaller(String input) {
         log.info("Calling PaymentDataTool to get data from api with input: {}", input);

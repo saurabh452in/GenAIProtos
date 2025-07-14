@@ -1,3 +1,4 @@
+/*
 package com.eventDriven.PmtProcessor.config;
 
 import com.eventDriven.PmtProcessor.enums.PaymentEvent;
@@ -78,3 +79,4 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<Status, Pa
             .listener(adapter);
     }
 }
+*/

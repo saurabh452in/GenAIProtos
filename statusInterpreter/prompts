@@ -4,7 +4,6 @@ tell me more about the paymentId 10
 
 show me all the attributes of the paymentId 10
 
-at what time was the paymentId 10 routed
 
 at what time was the paymentId 10 in RECEVIED/ROUTED state
 
@@ -31,7 +30,7 @@ at what time was the paymentId 10 in RECEVIED/ROUTED state
 2025-07-02 16:11:00,542 [http-nio-8081-exec-10] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from api with input: 110
 
 
-tool information retrieved and then llm decide that another tool needs to be used below - Autonomous behavior.
+tool information retrieved and then llm decided that another tool needs to be used below - Autonomous behavior.
 2025-07-02 16:11:29,972 [http-nio-8081-exec-2] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from vectorstore with input: 110
 2025-07-02 16:11:31,378 [http-nio-8081-exec-2] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Retrieved 8 docs from vectorstore for input: 110
 2025-07-02 16:11:31,379 [http-nio-8081-exec-2] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from api with input: 110

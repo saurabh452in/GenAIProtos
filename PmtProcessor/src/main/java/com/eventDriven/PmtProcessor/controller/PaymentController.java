@@ -66,7 +66,7 @@ public class PaymentController {
         payment.setCurrency("USD"); // Default currency
         payment.setCreditorAccount("123-456-789"); // Default creditor account
         payment.setDebtorAccount("987-654-321"); // Default debtor account
-        payment.setStatus(Status.INITIATED);
+        payment.setStatus(Status.RECEIVED);
         payment.setPaymentId(paymentId);
         payment.setPaymentCreationTimestamp(new Date());
         repository.save(payment);
@@ -74,7 +74,7 @@ public class PaymentController {
         logger.info("Received payment request: {}", payment);
 
         try {
-            payment.setStatus(Status.INITIATED);
+            payment.setStatus(Status.RECEIVED);
             logger.debug("Payment processed successfully");
 
             kafkaTemplate.send("gatewayTopic", payment.getPaymentId(), converter.convertToString(payment));
