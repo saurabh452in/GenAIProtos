@@ -1,0 +1,54 @@
+2025-06-12 16:21:25,888 [main] INFO  c.p.s.StatusInterpreterApplicationTests - Starting StatusInterpreterApplicationTests using Java 21.0.7 with PID 14120 (started by saura in d:\saura\work\intellijWorkspace\GenAIProtos\statusInterpreter)
+2025-06-12 16:21:25,889 [main] INFO  c.p.s.StatusInterpreterApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-06-12 16:21:27,948 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-06-12 16:21:27,950 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-06-12 16:21:27,951 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-06-12 16:21:27,976 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable completions capabilities
+2025-06-12 16:21:27,986 [main] WARN  o.s.a.m.c.c.a.ChatClientAutoConfiguration - You have enabled logging out the ChatClient prompt content with the risk of exposing sensitive or private information. Please, be careful!
+2025-06-12 16:21:27,992 [main] WARN  o.s.a.m.c.o.a.ChatObservationAutoConfiguration - You have enabled logging out the prompt content with the risk of exposing sensitive or private information. Please, be careful!
+2025-06-12 16:21:27,993 [main] WARN  o.s.a.m.c.o.a.ChatObservationAutoConfiguration - You have enabled logging out the completion content with the risk of exposing sensitive or private information. Please, be careful!
+2025-06-12 16:21:28,184 [main] INFO  c.p.s.StatusInterpreterApplicationTests - Started StatusInterpreterApplicationTests in 2.786 seconds (process running for 3.729)
+2025-06-12 16:32:46,252 [main] INFO  c.p.s.StatusInterpreterApplication - Starting StatusInterpreterApplication using Java 21.0.7 with PID 23360 (D:\saura\work\intellijWorkspace\GenAIProtos\statusInterpreter\target\classes started by saura in D:\saura\work\intellijWorkspace\GenAIProtos\statusInterpreter)
+2025-06-12 16:32:46,255 [main] INFO  c.p.s.StatusInterpreterApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-12 16:32:47,800 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-06-12 16:32:47,812 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-06-12 16:32:47,814 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-12 16:32:47,815 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-12 16:32:47,876 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-12 16:32:47,877 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1558 ms
+2025-06-12 16:32:48,788 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-06-12 16:32:48,790 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-06-12 16:32:48,791 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-06-12 16:32:48,792 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable completions capabilities
+2025-06-12 16:32:48,801 [main] WARN  o.s.a.m.c.c.a.ChatClientAutoConfiguration - You have enabled logging out the ChatClient prompt content with the risk of exposing sensitive or private information. Please, be careful!
+2025-06-12 16:32:48,806 [main] WARN  o.s.a.m.c.o.a.ChatObservationAutoConfiguration - You have enabled logging out the prompt content with the risk of exposing sensitive or private information. Please, be careful!
+2025-06-12 16:32:48,807 [main] WARN  o.s.a.m.c.o.a.ChatObservationAutoConfiguration - You have enabled logging out the completion content with the risk of exposing sensitive or private information. Please, be careful!
+2025-06-12 16:32:48,897 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-06-12 16:32:48,909 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-06-12 16:32:48,920 [main] INFO  c.p.s.StatusInterpreterApplication - Started StatusInterpreterApplication in 3.28 seconds (process running for 3.93)
+2025-06-12 16:34:14,622 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-12 16:34:14,622 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-12 16:34:14,623 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-06-12 16:35:05,185 [http-nio-8081-exec-3] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from db with input: 10
+2025-06-12 16:39:43,422 [main] INFO  c.p.s.StatusInterpreterApplication - Starting StatusInterpreterApplication using Java 21.0.7 with PID 11376 (D:\saura\work\intellijWorkspace\GenAIProtos\statusInterpreter\target\classes started by saura in D:\saura\work\intellijWorkspace\GenAIProtos\statusInterpreter)
+2025-06-12 16:39:43,426 [main] INFO  c.p.s.StatusInterpreterApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-12 16:39:45,089 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-06-12 16:39:45,110 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-06-12 16:39:45,114 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-12 16:39:45,115 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-12 16:39:45,193 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-12 16:39:45,195 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1703 ms
+2025-06-12 16:39:46,653 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-06-12 16:39:46,656 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-06-12 16:39:46,658 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-06-12 16:39:46,659 [main] INFO  o.s.a.m.s.a.McpServerAutoConfiguration - Enable completions capabilities
+2025-06-12 16:39:46,675 [main] WARN  o.s.a.m.c.c.a.ChatClientAutoConfiguration - You have enabled logging out the ChatClient prompt content with the risk of exposing sensitive or private information. Please, be careful!
+2025-06-12 16:39:46,683 [main] WARN  o.s.a.m.c.o.a.ChatObservationAutoConfiguration - You have enabled logging out the prompt content with the risk of exposing sensitive or private information. Please, be careful!
+2025-06-12 16:39:46,684 [main] WARN  o.s.a.m.c.o.a.ChatObservationAutoConfiguration - You have enabled logging out the completion content with the risk of exposing sensitive or private information. Please, be careful!
+2025-06-12 16:39:46,851 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-06-12 16:39:46,883 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-06-12 16:39:46,914 [main] INFO  c.p.s.StatusInterpreterApplication - Started StatusInterpreterApplication in 4.225 seconds (process running for 4.964)
+2025-06-12 16:40:22,739 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-12 16:40:22,740 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-12 16:40:22,741 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-06-12 16:40:33,561 [http-nio-8081-exec-4] INFO  c.p.s.aiSvc.PmtAgentToolCallerSvc - Calling PaymentDataTool to get data from db with input: 56

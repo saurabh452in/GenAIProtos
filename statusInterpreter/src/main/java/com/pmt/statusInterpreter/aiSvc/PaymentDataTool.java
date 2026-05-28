@@ -73,7 +73,7 @@ public class PaymentDataTool {
         }
     }
 
-    public List<String> searchLogFile(String filePath, String searchString) {
+    public List<String> wrte(String filePath, String searchString) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             return reader.lines()
                     .filter(line -> line.contains("paymentId='" + searchString + "'"))
